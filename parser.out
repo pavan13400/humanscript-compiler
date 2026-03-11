@@ -1,0 +1,189 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> CREATE LIST FROM NUMBER TO NUMBER
+Rule 2     statement -> FILTER EVEN
+Rule 3     statement -> FILTER ODD
+Rule 4     statement -> CALCULATE SUM
+Rule 5     statement -> PRINT RESULT
+Rule 6     statement -> PRINT LIST
+Rule 7     statement -> CALCULATE AVERAGE
+Rule 8     statement -> FILTER GREATER NUMBER
+
+Terminals, with rules where they appear
+
+AVERAGE              : 7
+CALCULATE            : 4 7
+CREATE               : 1
+EVEN                 : 2
+FILTER               : 2 3 8
+FROM                 : 1
+GREATER              : 8
+LIST                 : 1 6
+NUMBER               : 1 1 8
+ODD                  : 3
+PRINT                : 5 6
+RESULT               : 5
+SUM                  : 4
+TO                   : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . CREATE LIST FROM NUMBER TO NUMBER
+    (2) statement -> . FILTER EVEN
+    (3) statement -> . FILTER ODD
+    (4) statement -> . CALCULATE SUM
+    (5) statement -> . PRINT RESULT
+    (6) statement -> . PRINT LIST
+    (7) statement -> . CALCULATE AVERAGE
+    (8) statement -> . FILTER GREATER NUMBER
+
+    CREATE          shift and go to state 2
+    FILTER          shift and go to state 3
+    CALCULATE       shift and go to state 4
+    PRINT           shift and go to state 5
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> CREATE . LIST FROM NUMBER TO NUMBER
+
+    LIST            shift and go to state 6
+
+
+state 3
+
+    (2) statement -> FILTER . EVEN
+    (3) statement -> FILTER . ODD
+    (8) statement -> FILTER . GREATER NUMBER
+
+    EVEN            shift and go to state 7
+    ODD             shift and go to state 8
+    GREATER         shift and go to state 9
+
+
+state 4
+
+    (4) statement -> CALCULATE . SUM
+    (7) statement -> CALCULATE . AVERAGE
+
+    SUM             shift and go to state 10
+    AVERAGE         shift and go to state 11
+
+
+state 5
+
+    (5) statement -> PRINT . RESULT
+    (6) statement -> PRINT . LIST
+
+    RESULT          shift and go to state 12
+    LIST            shift and go to state 13
+
+
+state 6
+
+    (1) statement -> CREATE LIST . FROM NUMBER TO NUMBER
+
+    FROM            shift and go to state 14
+
+
+state 7
+
+    (2) statement -> FILTER EVEN .
+
+    $end            reduce using rule 2 (statement -> FILTER EVEN .)
+
+
+state 8
+
+    (3) statement -> FILTER ODD .
+
+    $end            reduce using rule 3 (statement -> FILTER ODD .)
+
+
+state 9
+
+    (8) statement -> FILTER GREATER . NUMBER
+
+    NUMBER          shift and go to state 15
+
+
+state 10
+
+    (4) statement -> CALCULATE SUM .
+
+    $end            reduce using rule 4 (statement -> CALCULATE SUM .)
+
+
+state 11
+
+    (7) statement -> CALCULATE AVERAGE .
+
+    $end            reduce using rule 7 (statement -> CALCULATE AVERAGE .)
+
+
+state 12
+
+    (5) statement -> PRINT RESULT .
+
+    $end            reduce using rule 5 (statement -> PRINT RESULT .)
+
+
+state 13
+
+    (6) statement -> PRINT LIST .
+
+    $end            reduce using rule 6 (statement -> PRINT LIST .)
+
+
+state 14
+
+    (1) statement -> CREATE LIST FROM . NUMBER TO NUMBER
+
+    NUMBER          shift and go to state 16
+
+
+state 15
+
+    (8) statement -> FILTER GREATER NUMBER .
+
+    $end            reduce using rule 8 (statement -> FILTER GREATER NUMBER .)
+
+
+state 16
+
+    (1) statement -> CREATE LIST FROM NUMBER . TO NUMBER
+
+    TO              shift and go to state 17
+
+
+state 17
+
+    (1) statement -> CREATE LIST FROM NUMBER TO . NUMBER
+
+    NUMBER          shift and go to state 18
+
+
+state 18
+
+    (1) statement -> CREATE LIST FROM NUMBER TO NUMBER .
+
+    $end            reduce using rule 1 (statement -> CREATE LIST FROM NUMBER TO NUMBER .)
+
